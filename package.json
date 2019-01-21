@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Mouse CLI",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/Arcia125/automouse#readme",
   "dependencies": {
+    "minimist": "^1.2.0",
     "robotjs": "^0.5.1"
   }
 }

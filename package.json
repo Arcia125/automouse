@@ -2,11 +2,14 @@
   "name": "automouse",
   "version": "1.0.0",
   "description": "Mouse CLI",
-  "main": "index.js",
-  "bin": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": ">=10"
   },
+  "main": "index.js",
+  "bin": {
+    "automouse": "bin/automouse"
+  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Arcia125/automouse.git"

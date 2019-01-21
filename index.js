@@ -8,5 +8,9 @@ module.exports = () => {
     case "interactive":
       require("./src/cmds/interactive")(args);
       break;
+    case "--help":
+    case "-h":
+    default:
+      require("./src/cmds/help")(args);
   }
 };

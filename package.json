@@ -1,0 +1,22 @@
+{
+  "name": "automouse",
+  "version": "1.0.0",
+  "description": "Mouse CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcia125/automouse.git"
+  },
+  "keywords": [
+    "mouse"
+  ],
+  "author": "Kevin Hallett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arcia125/automouse/issues"
+  },
+  "homepage": "https://github.com/Arcia125/automouse#readme"
+}

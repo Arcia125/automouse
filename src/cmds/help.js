@@ -1,5 +1,5 @@
 const helpMessage = `
-usage automouse [command]
+usage: automouse [command]
 
 Commands:
 interactive|i - starts interactive mode

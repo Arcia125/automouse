@@ -24,12 +24,9 @@ const setDown = () => {
   console.log("direction set to down");
 };
 
-const createMouseCommand = ({ value, direction }) => () => {
+const createMouseCommand = value => () => {
   const mousePos = robotjs.getMousePos();
-  robotjs.moveMouse(
-    direction[0] * value + mousePos.x,
-    direction[1] * value + mousePos.y
-  );
+  robotjs.moveMouse(dir[0] * value + mousePos.x, dir[1] * value + mousePos.y);
 };
 
 function parseUserInput(userInput) {
@@ -52,10 +49,7 @@ function parseUserInput(userInput) {
         if (isNaN(input)) {
           return () => console.error(`invalid command encountered: ${input}`);
         }
-        return createMouseCommand({
-          value: parseInt(input, 10),
-          direction: dir
-        });
+        return createMouseCommand(parseInt(input, 10));
     }
   });
 }

@@ -41,6 +41,7 @@ usage: automouse [command]
 Commands:
 interactive|i - starts interactive mode
 version - displays the current version.
+file|f [path] - runs mouse commands from a file.
 ```
 
 ## Examples

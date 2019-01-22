@@ -7,8 +7,6 @@ module.exports = async () => {
       "Enter commands separated by spaces:\n"
     );
     const commands = MouseController.parseUserInput(userInput);
-    commands.forEach(cmd => {
-      cmd();
-    });
+    MouseController.runCommands(commands);
   }
 };

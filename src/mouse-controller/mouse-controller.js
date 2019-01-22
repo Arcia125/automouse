@@ -1,5 +1,7 @@
 const robotjs = require("robotjs");
 
+const call = require("../utils/call");
+
 class MouseController {
   constructor() {
     this.dir = [1, 0];
@@ -145,6 +147,13 @@ class MouseController {
    */
   parseCommands(commands) {
     return commands.map(this.parseMouseCommand);
+  }
+
+  /**
+   * @param {Function[]} commandFns mouse command functions
+   */
+  runCommands(commandFns) {
+    return commandFns.forEach(call);
   }
 }
 

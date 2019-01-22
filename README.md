@@ -19,9 +19,19 @@ Control your mouse via CLI.
 
 ## Installation
 
+Must have [npm](https://www.npmjs.com/get-npm), [python2](https://www.python.org/downloads/).
+
 ```
 npm install -g automouse
 ```
+
+If you get errors with `node-gyp` during installation, make sure you have python2 installed and run
+
+```
+npm install -g automouse --python="path/to/python2"
+```
+
+If you continue to encounter issues, see installation/build instructions for [robotjs](https://github.com/octalmage/robotjs)
 
 ## Usage
 

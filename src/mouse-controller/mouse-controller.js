@@ -20,21 +20,25 @@ class MouseController {
 
   setRight() {
     this.dir = [1, 0];
+    // eslint-disable-next-line no-console
     console.log("direction set to right");
   }
 
   setLeft() {
     this.dir = [-1, 0];
+    // eslint-disable-next-line no-console
     console.log("direction set to left");
   }
 
   setUp() {
     this.dir = [0, -1];
+    // eslint-disable-next-line no-console
     console.log("direction set to up");
   }
 
   setDown() {
     this.dir = [0, 1];
+    // eslint-disable-next-line no-console
     console.log("direction set to down");
   }
 
@@ -90,6 +94,7 @@ class MouseController {
       default:
         if (isNaN(mouseCommand)) {
           return () =>
+            // eslint-disable-next-line no-console
             console.error(`invalid command encountered: ${mouseCommand}`);
         }
         return this.createMouseMoveCommand(parseInt(mouseCommand, 10));

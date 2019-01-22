@@ -10,6 +10,7 @@ module.exports = async () => {
       break;
     case "version":
       require("./src/cmds/version")(args);
+      break;
     case "--help":
     case "-h":
     default:

@@ -15,7 +15,7 @@ const main = async () => {
     case "e":
     case "exec":
     case "execute":
-      await require("./src/cmds/execute")(args);
+      require("./src/cmds/execute")(args);
       break;
     case "version":
       require("./src/cmds/version")(args);

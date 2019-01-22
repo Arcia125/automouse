@@ -8,8 +8,6 @@ module.exports = async () => {
     case "interactive":
       await require("./src/cmds/interactive")(args);
       break;
-    case "-v":
-    case "--version":
     case "version":
       require("./src/cmds/version")(args);
       break;

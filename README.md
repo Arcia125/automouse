@@ -41,6 +41,7 @@ usage: automouse [command]
 Commands:
 interactive|i - starts interactive mode
 version - displays the current version.
+file|f [path] - runs mouse commands from a file.
 ```
 
 ## Examples
@@ -52,6 +53,12 @@ md r 50 d 50 l 50 u 50 r 75 d 75 l 75 u 75 r 100 d 100 l 100 u 100 mu
 ```
 
 ![example](./example.gif)
+
+Open a drawing app and run the following with the cursor over the canvas.
+
+```bash
+automouse f example\draw.txt
+```
 
 ## Mouse Commands
 

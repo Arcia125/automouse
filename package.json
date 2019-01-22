@@ -15,10 +15,18 @@
     "url": "git+https://github.com/Arcia125/automouse.git"
   },
   "keywords": [
-    "mouse"
+    "mouse",
+    "automation",
+    "cursor",
+    "CLI"
   ],
+  "preferGlobal": true,
   "author": "Kevin Hallett",
-  "license": "ISC",
+  "directories": {
+    "bin": "bin",
+    "lib": "src"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Arcia125/automouse/issues"
   },

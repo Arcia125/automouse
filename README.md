@@ -2,6 +2,12 @@
 
 Control your mouse via CLI.
 
+## Installation
+
+```
+npm install -g automouse
+```
+
 ## Usage
 
 ```

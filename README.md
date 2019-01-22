@@ -42,6 +42,7 @@ Commands:
 interactive|i - starts interactive mode
 version - displays the current version.
 file|f [path] - runs mouse commands from a file.
+execute|e [mouse args] - runs arguments directly.
 ```
 
 ## Examples
@@ -58,6 +59,12 @@ Open a drawing app and run the following with the cursor over the canvas.
 
 ```bash
 automouse f example\draw.txt
+```
+
+or
+
+```bash
+automouse e md r 50 d 50 l 50 u 50 r 75 d 75 l 75 u 75 r 100 d 100 l 100 u 100 mu
 ```
 
 ## Mouse Commands

@@ -8,6 +8,9 @@
 <a href="https://www.codefactor.io/repository/github/arcia125/automouse">
 <img src="https://www.codefactor.io/repository/github/arcia125/automouse/badge">
 </a>
+<a href="https://www.npmjs.com/package/automouse">
+<img src="https://img.shields.io/npm/dt/automouse.svg">
+</a>
 </p>
 
 Control your mouse via CLI.

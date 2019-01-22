@@ -7,7 +7,7 @@ class MouseController {
     this.setLeft = this.setLeft.bind(this);
     this.setUp = this.setUp.bind(this);
     this.setDown = this.setDown.bind(this);
-    this.createMouseCommand = this.createMouseCommand.bind(this);
+    this.createMouseMoveCommand = this.createMouseMoveCommand.bind(this);
     this.parseUserInput = this.parseUserInput.bind(this);
   }
 
@@ -31,7 +31,12 @@ class MouseController {
     console.log("direction set to down");
   }
 
-  createMouseCommand(value) {
+  /**
+   * Creates a function that moves the mouse by an amount using the current direction.
+   * @param {number} value amount to move the cursor (will be multiplied by the current direction)
+   * @returns {Function}
+   */
+  createMouseMoveCommand(value) {
     return () => {
       const mousePos = robotjs.getMousePos();
       robotjs.moveMouse(
@@ -41,6 +46,11 @@ class MouseController {
     };
   }
 
+  /**
+   *
+   * @param {string} userInput space delimited mouse commands.
+   * @returns {Function[]} mouse command functions.
+   */
   parseUserInput(userInput) {
     const inputs = userInput.split(" ");
     return inputs.map(input => {
@@ -81,7 +91,7 @@ class MouseController {
           if (isNaN(input)) {
             return () => console.error(`invalid command encountered: ${input}`);
           }
-          return this.createMouseCommand(parseInt(input, 10));
+          return this.createMouseMoveCommand(parseInt(input, 10));
       }
     });
   }

@@ -25,5 +25,5 @@ const main = async () => {
 module.exports = main;
 
 if (require.main) {
-  (async () => await main())();
+  main();
 }

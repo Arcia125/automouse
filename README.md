@@ -2,6 +2,8 @@
 
 Control your mouse via CLI.
 
+## Usage
+
 ```
 usage: automouse [command]
 

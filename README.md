@@ -1,5 +1,7 @@
 <p align="center">
 <img src="./logo.png">
+</p>
+<p align="center">
 <a href="https://www.npmjs.com/package/automouse">
 <img src="https://img.shields.io/npm/v/automouse.svg">
 </a>

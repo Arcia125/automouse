@@ -45,9 +45,14 @@ function parseUserInput(userInput) {
       case "DOWN":
       case "D":
         return setDown;
+      case "LEFT-CLICK":
       case "CLICK":
+      case "LC":
       case "C":
         return () => robotjs.mouseClick();
+      case "RIGHT-CLICK":
+      case "RC":
+        return () => robotjs.mouseClick("right");
       default:
         if (isNaN(input)) {
           return () => console.error(`invalid command encountered: ${input}`);

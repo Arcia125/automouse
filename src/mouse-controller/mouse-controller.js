@@ -9,6 +9,13 @@ class MouseController {
     this.setDown = this.setDown.bind(this);
     this.createMouseMoveCommand = this.createMouseMoveCommand.bind(this);
     this.parseUserInput = this.parseUserInput.bind(this);
+    this.parseMouseCommand = this.parseMouseCommand.bind(this);
+    this.leftClick = this.leftClick.bind(this);
+    this.rightClick = this.rightClick.bind(this);
+    this.mouseUp = this.mouseUp.bind(this);
+    this.mouseDown = this.mouseDown.bind(this);
+    this.mouseDownRight = this.mouseDownRight.bind(this);
+    this.mouseUpRight = this.mouseUpRight.bind(this);
   }
 
   setRight() {
@@ -46,6 +53,73 @@ class MouseController {
     };
   }
 
+  parseMouseCommand(mouseCommand) {
+    switch (mouseCommand.toUpperCase()) {
+      case "RIGHT":
+      case "R":
+        return this.setRight;
+      case "LEFT":
+      case "L":
+        return this.setLeft;
+      case "UP":
+      case "U":
+        return this.setUp;
+      case "DOWN":
+      case "D":
+        return this.setDown;
+      case "LEFT-CLICK":
+      case "CLICK":
+      case "LC":
+      case "C":
+        return this.leftClick;
+      case "RIGHT-CLICK":
+      case "RC":
+        return this.rightClick;
+      case "MOUSE-DOWN":
+      case "MD":
+        return this.mouseDown;
+      case "MOUSE-UP":
+      case "MU":
+        return this.mouseUp;
+      case "MOUSE-DOWN-RIGHT":
+      case "MDR":
+        return this.mouseDownRight;
+      case "MOUSE-UP-RIGHT":
+      case "MUR":
+        return this.mouseUpRight;
+      default:
+        if (isNaN(mouseCommand)) {
+          return () =>
+            console.error(`invalid command encountered: ${mouseCommand}`);
+        }
+        return this.createMouseMoveCommand(parseInt(mouseCommand, 10));
+    }
+  }
+
+  mouseUpRight() {
+    robotjs.mouseToggle("up", "right");
+  }
+
+  mouseDownRight() {
+    robotjs.mouseToggle("down", "right");
+  }
+
+  mouseUp() {
+    robotjs.mouseToggle("up");
+  }
+
+  mouseDown() {
+    robotjs.mouseToggle("down");
+  }
+
+  rightClick() {
+    robotjs.mouseClick("right");
+  }
+
+  leftClick() {
+    robotjs.mouseClick();
+  }
+
   /**
    *
    * @param {string} userInput space delimited mouse commands.
@@ -53,47 +127,7 @@ class MouseController {
    */
   parseUserInput(userInput) {
     const inputs = userInput.split(" ");
-    return inputs.map(input => {
-      switch (input.toUpperCase()) {
-        case "RIGHT":
-        case "R":
-          return this.setRight;
-        case "LEFT":
-        case "L":
-          return this.setLeft;
-        case "UP":
-        case "U":
-          return this.setUp;
-        case "DOWN":
-        case "D":
-          return this.setDown;
-        case "LEFT-CLICK":
-        case "CLICK":
-        case "LC":
-        case "C":
-          return () => robotjs.mouseClick();
-        case "RIGHT-CLICK":
-        case "RC":
-          return () => robotjs.mouseClick("right");
-        case "MOUSE-DOWN":
-        case "MD":
-          return () => robotjs.mouseToggle("down");
-        case "MOUSE-UP":
-        case "MU":
-          return () => robotjs.mouseToggle("up");
-        case "MOUSE-DOWN-RIGHT":
-        case "MDR":
-          return () => robotjs.mouseToggle("down", "right");
-        case "MOUSE-UP-RIGHT":
-        case "MUR":
-          return () => robotjs.mouseToggle("up", "right");
-        default:
-          if (isNaN(input)) {
-            return () => console.error(`invalid command encountered: ${input}`);
-          }
-          return this.createMouseMoveCommand(parseInt(input, 10));
-      }
-    });
+    return inputs.map(this.parseMouseCommand);
   }
 }
 

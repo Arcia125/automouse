@@ -1,5 +1,3 @@
-const robotjs = require("robotjs");
-
 const getUserInput = require("../utils/getUserInput");
 const MouseController = require("../mouse-controller");
 

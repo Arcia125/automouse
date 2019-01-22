@@ -5,6 +5,9 @@
 <a href="https://www.npmjs.com/package/automouse">
 <img src="https://img.shields.io/npm/v/automouse.svg">
 </a>
+<a href="https://www.codefactor.io/repository/github/arcia125/automouse">
+<img src="https://www.codefactor.io/repository/github/arcia125/automouse/badge">
+</a>
 </p>
 
 Control your mouse via CLI.

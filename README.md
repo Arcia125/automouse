@@ -11,6 +11,8 @@
 <a href="https://www.npmjs.com/package/automouse">
 <img src="https://img.shields.io/npm/dt/automouse.svg">
 </a>
+<img src="https://img.shields.io/github/repo-size/Arcia125/automouse.svg">
+<img src="https://img.shields.io/github/issues/arcia125/automouse.svg">
 </p>
 
 Control your mouse via CLI.

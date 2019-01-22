@@ -1,6 +1,6 @@
 {
   "name": "automouse",
-  "version": "1.1.2",
+  "version": "1.2.2",
   "description": "Mouse CLI",
   "engines": {
     "node": ">=10"
@@ -9,7 +9,9 @@
   "bin": {
     "automouse": "bin/automouse"
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Arcia125/automouse.git"
@@ -34,5 +36,8 @@
   "dependencies": {
     "minimist": "^1.2.0",
     "robotjs": "^0.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1"
   }
 }

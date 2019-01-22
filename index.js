@@ -8,6 +8,8 @@ module.exports = async () => {
     case "interactive":
       await require("./src/cmds/interactive")(args);
       break;
+    case "version":
+      require("./src/cmds/version")(args);
     case "--help":
     case "-h":
     default:

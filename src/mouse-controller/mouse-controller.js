@@ -16,6 +16,7 @@ class MouseController {
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseDownRight = this.mouseDownRight.bind(this);
     this.mouseUpRight = this.mouseUpRight.bind(this);
+    this.parseCommands = this.parseCommands.bind(this);
   }
 
   setRight() {
@@ -58,7 +59,9 @@ class MouseController {
   }
 
   parseMouseCommand(mouseCommand) {
-    switch (mouseCommand.toUpperCase()) {
+    const isNumber = !isNaN(mouseCommand);
+    const cmd = isNumber ? mouseCommand : mouseCommand.toUpperCase();
+    switch (cmd) {
       case "RIGHT":
       case "R":
         return this.setRight;
@@ -92,12 +95,12 @@ class MouseController {
       case "MUR":
         return this.mouseUpRight;
       default:
-        if (isNaN(mouseCommand)) {
+        if (!isNumber) {
           return () =>
             // eslint-disable-next-line no-console
-            console.error(`invalid command encountered: ${mouseCommand}`);
+            console.error(`invalid command encountered: ${cmd}`);
         }
-        return this.createMouseMoveCommand(parseInt(mouseCommand, 10));
+        return this.createMouseMoveCommand(parseInt(cmd, 10));
     }
   }
 
@@ -132,7 +135,16 @@ class MouseController {
    */
   parseUserInput(userInput) {
     const inputs = userInput.split(" ");
-    return inputs.map(this.parseMouseCommand);
+    return this.parseCommands(inputs);
+  }
+
+  /**
+   *
+   * @param {string[]} commands mouse commands.
+   * @returns {Function[]} mouse command functions.
+   */
+  parseCommands(commands) {
+    return commands.map(this.parseMouseCommand);
   }
 }
 

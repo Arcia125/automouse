@@ -56,6 +56,9 @@ function parseUserInput(userInput) {
       case "MOUSE-DOWN":
       case "MD":
         return () => robotjs.mouseToggle("down");
+      case "MOUSE-UP":
+      case "MU":
+        return () => robotjs.mouseToggle("up");
       default:
         if (isNaN(input)) {
           return () => console.error(`invalid command encountered: ${input}`);

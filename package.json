@@ -10,7 +10,9 @@
     "automouse": "bin/automouse"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write **/*.js",
+    "prepare-commit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -45,12 +47,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run prepare-commit"
     }
   },
   "lint-staged": {
+    "*.{js}": [
+      "eslint"
+    ],
     "*.{js,json,css,md}": [
-      "eslint",
       "prettier --write",
       "git add"
     ]

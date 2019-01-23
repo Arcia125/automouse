@@ -12,5 +12,5 @@ module.exports = async args => {
     });
   });
   const commands = MouseController.parseUserInput(fileData);
-  MouseController.runCommands(commands);
+  await MouseController.runCommands(commands);
 };

@@ -60,6 +60,7 @@ MOUSE-DOWN|MD - toggle the mouse down.
 MOUSE-UP|MU - toggle the mouse up.
 MOUSE-DOWN-RIGHT|MDR - toggle the right mouse button down.
 MOUSE-UP-RIGHT|MUR - toggle the right mouse button up.
+[WAIT|W]:duration - waits the given amount of milliseconds.
 [integer] - move the mouse in the current direction by this amount. example: "right 50" == move the mouse 50 pixels to the right.
 ```
 

@@ -1,6 +1,6 @@
 const robotjs = require("robotjs");
 
-const call = require("../utils/call");
+const sleep = require("../utils/sleep");
 
 class MouseController {
   constructor() {
@@ -62,7 +62,8 @@ class MouseController {
 
   parseMouseCommand(mouseCommand) {
     const isNumber = !isNaN(mouseCommand);
-    const cmd = isNumber ? mouseCommand : mouseCommand.toUpperCase();
+    const fullCommand = isNumber ? mouseCommand : mouseCommand.toUpperCase();
+    const [cmd, cmdArgs] = isNumber ? [fullCommand, null] : fullCommand.split(":");
     switch (cmd) {
       case "RIGHT":
       case "R":
@@ -96,6 +97,9 @@ class MouseController {
       case "MOUSE-UP-RIGHT":
       case "MUR":
         return this.mouseUpRight;
+      case "S":
+      case "SLEEP":
+        return this.sleep(parseInt(cmdArgs, 10));
       default:
         if (!isNumber) {
           return () =>
@@ -104,6 +108,10 @@ class MouseController {
         }
         return this.createMouseMoveCommand(parseInt(cmd, 10));
     }
+  }
+
+  sleep(duration) {
+    return () => sleep(duration);
   }
 
   mouseUpRight() {
@@ -152,8 +160,14 @@ class MouseController {
   /**
    * @param {Function[]} commandFns mouse command functions
    */
-  runCommands(commandFns) {
-    return commandFns.forEach(call);
+  async runCommands(commandFns) {
+    for (let i = 0, len = commandFns.length, fn = null; i < len; i++) {
+      fn = commandFns[i];
+      const result = fn();
+      if (result && result.then) {
+        await result;
+      }
+    }
   }
 }
 

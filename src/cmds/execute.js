@@ -1,7 +1,7 @@
 const MouseController = require("../mouse-controller");
 
-module.exports = args => {
+module.exports = async args => {
   const mouseCommands = args._.slice(1);
   const commands = MouseController.parseCommands(mouseCommands);
-  MouseController.runCommands(commands);
+  await MouseController.runCommands(commands);
 };

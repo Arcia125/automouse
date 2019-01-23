@@ -47,7 +47,7 @@ execute|e [mouse args] - runs arguments directly.
 
 ## Mouse Commands
 
-Mouse commands are used to control the mouse. Commands are separated by spaces.
+Mouse commands are used to control the mouse. Commands are separated by spaces. Commands are case insensitive. Command arguments are passed with colons example: `sleep:1000`
 
 ```
 RIGHT|R - set direction to right.

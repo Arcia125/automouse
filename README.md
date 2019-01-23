@@ -8,6 +8,9 @@
 <a href="https://www.codefactor.io/repository/github/arcia125/automouse">
 <img src="https://www.codefactor.io/repository/github/arcia125/automouse/badge">
 </a>
+<a href="https://github.com/prettier/prettier">
+<img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+</a>
 <a href="https://www.npmjs.com/package/automouse">
 <img src="https://img.shields.io/npm/dt/automouse.svg">
 </a>

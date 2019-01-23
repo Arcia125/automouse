@@ -63,7 +63,9 @@ class MouseController {
   parseMouseCommand(mouseCommand) {
     const isNumber = !isNaN(mouseCommand);
     const fullCommand = isNumber ? mouseCommand : mouseCommand.toUpperCase();
-    const [cmd, cmdArgs] = isNumber ? [fullCommand, null] : fullCommand.split(":");
+    const [cmd, cmdArgs] = isNumber
+      ? [fullCommand, null]
+      : fullCommand.split(":");
     switch (cmd) {
       case "RIGHT":
       case "R":

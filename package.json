@@ -1,6 +1,6 @@
 {
   "name": "automouse",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "Mouse CLI",
   "engines": {
     "node": ">=10"
@@ -49,6 +49,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["eslint", "prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ]
   }
 }

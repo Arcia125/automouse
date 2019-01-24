@@ -10,18 +10,24 @@ class MouseController {
     this.setLeft = this.setLeft.bind(this);
     this.setUp = this.setUp.bind(this);
     this.setDown = this.setDown.bind(this);
+    this.moveMouse = this.moveMouse.bind(this);
+    this.getMousePosition = this.getMousePosition.bind(this);
+    this.createMouseMoveCommand = this.createMouseMoveCommand.bind(this);
     this.createRelativeMouseMoveCommand = this.createRelativeMouseMoveCommand.bind(
       this
     );
-    this.parseUserInput = this.parseUserInput.bind(this);
     this.parseMouseCommand = this.parseMouseCommand.bind(this);
-    this.leftClick = this.leftClick.bind(this);
-    this.rightClick = this.rightClick.bind(this);
+    this.error = this.error.bind(this);
+    this.sleep = this.sleep.bind(this);
+    this.mouseUpRight = this.mouseUpRight.bind(this);
+    this.mouseDownRight = this.mouseDownRight.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
-    this.mouseDownRight = this.mouseDownRight.bind(this);
-    this.mouseUpRight = this.mouseUpRight.bind(this);
+    this.rightClick = this.rightClick.bind(this);
+    this.leftClick = this.leftClick.bind(this);
+    this.parseUserInput = this.parseUserInput.bind(this);
     this.parseCommands = this.parseCommands.bind(this);
+    this.runCommands = this.runCommands.bind(this);
     this.runFile = this.runFile.bind(this);
   }
 

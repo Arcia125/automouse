@@ -6,6 +6,8 @@ const sleep = require("../utils/sleep");
 class MouseController {
   constructor() {
     this.dir = [1, 0];
+    this.error = this.error.bind(this);
+    this.log = this.log.bind(this);
     this.setRight = this.setRight.bind(this);
     this.setLeft = this.setLeft.bind(this);
     this.setUp = this.setUp.bind(this);
@@ -17,7 +19,6 @@ class MouseController {
       this
     );
     this.parseMouseCommand = this.parseMouseCommand.bind(this);
-    this.error = this.error.bind(this);
     this.sleep = this.sleep.bind(this);
     this.mouseUpRight = this.mouseUpRight.bind(this);
     this.mouseDownRight = this.mouseDownRight.bind(this);
@@ -31,28 +32,41 @@ class MouseController {
     this.runFile = this.runFile.bind(this);
   }
 
+  /**
+   * @param {string} cmd
+   * @param {string} msg
+   */
+  error(cmd, msg) {
+    // eslint-disable-next-line no-console
+    console.error(msg ? msg : `invalid command encountered: ${cmd}`);
+  }
+
+  /**
+   * @param {string} msg
+   */
+  log(msg) {
+    // eslint-disable-next-line no-console
+    console.log(msg);
+  }
+
   setRight() {
     this.dir = [1, 0];
-    // eslint-disable-next-line no-console
-    console.log("direction set to right");
+    this.log("direction set to right");
   }
 
   setLeft() {
     this.dir = [-1, 0];
-    // eslint-disable-next-line no-console
-    console.log("direction set to left");
+    this.log("direction set to left");
   }
 
   setUp() {
     this.dir = [0, -1];
-    // eslint-disable-next-line no-console
-    console.log("direction set to up");
+    this.log("direction set to up");
   }
 
   setDown() {
     this.dir = [0, 1];
-    // eslint-disable-next-line no-console
-    console.log("direction set to down");
+    this.log("direction set to down");
   }
 
   moveMouse(x, y) {
@@ -151,15 +165,6 @@ class MouseController {
         }
         return this.createRelativeMouseMoveCommand(parseInt(cmd, 10));
     }
-  }
-
-  /**
-   * @param {string} cmd
-   * @param {string} msg
-   */
-  error(cmd, msg) {
-    // eslint-disable-next-line no-console
-    console.error(msg ? msg : `invalid command encountered: ${cmd}`);
   }
 
   sleep(duration) {

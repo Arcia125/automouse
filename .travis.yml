@@ -1,7 +1,20 @@
 language: node_js
 node_js:
   - "10"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libx11-dev
+      - zlib1g-dev
+      - libpng12-dev
+      - libxtst-dev
+      - g++-4.8
+      - gcc-4.8
 before_install:
   - npm i -g npm@4.0.5
 install:
   - npm install
+script:
+  - npm run test

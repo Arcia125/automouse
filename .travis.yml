@@ -15,8 +15,6 @@ addons:
       - libxtst-dev
       - g++-4.8
       - gcc-4.8
-before_install:
-  - npm i -g npm@4.0.5
 install:
   - npm install
 script:

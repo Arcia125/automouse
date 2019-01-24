@@ -1,3 +1,4 @@
+const fs = require("fs");
 const robotjs = require("robotjs");
 
 const sleep = require("../utils/sleep");
@@ -19,6 +20,7 @@ class MouseController {
     this.mouseDownRight = this.mouseDownRight.bind(this);
     this.mouseUpRight = this.mouseUpRight.bind(this);
     this.parseCommands = this.parseCommands.bind(this);
+    this.runFile = this.runFile.bind(this);
   }
 
   setRight() {
@@ -170,6 +172,22 @@ class MouseController {
         await result;
       }
     }
+  }
+
+  /**
+   * @param {string} filePath
+   */
+  async runFile(filePath) {
+    const fileData = await new Promise((resolve, reject) => {
+      fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(data);
+      });
+    });
+    const commands = this.parseUserInput(fileData);
+    await this.runCommands(commands);
   }
 }
 

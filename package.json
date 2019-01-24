@@ -12,7 +12,8 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write **/*.js",
-    "prepare-commit": "lint-staged"
+    "prepare-commit": "lint-staged",
+    "test": "eslint ."
   },
   "repository": {
     "type": "git",

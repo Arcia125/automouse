@@ -10,7 +10,9 @@ class MouseController {
     this.setLeft = this.setLeft.bind(this);
     this.setUp = this.setUp.bind(this);
     this.setDown = this.setDown.bind(this);
-    this.createMouseMoveCommand = this.createMouseMoveCommand.bind(this);
+    this.createRelativeMouseMoveCommand = this.createRelativeMouseMoveCommand.bind(
+      this
+    );
     this.parseUserInput = this.parseUserInput.bind(this);
     this.parseMouseCommand = this.parseMouseCommand.bind(this);
     this.leftClick = this.leftClick.bind(this);
@@ -47,18 +49,39 @@ class MouseController {
     console.log("direction set to down");
   }
 
+  moveMouse(x, y) {
+    robotjs.moveMouse(x, y);
+  }
+
+  /**
+   * @returns {{ x: number, y: number }} current position of the mouse
+   */
+  getMousePosition() {
+    return robotjs.getMousePos();
+  }
+
+  /**
+   * @param {int} x
+   * @param {int} y
+   */
+  createMouseMoveCommand(x, y) {
+    return () => {
+      this.moveMouse(x, y);
+    };
+  }
+
   /**
    * Creates a function that moves the mouse by an amount using the current direction.
    * @param {number} value amount to move the cursor (will be multiplied by the current direction)
    * @returns {Function}
    */
-  createMouseMoveCommand(value) {
+  createRelativeMouseMoveCommand(value) {
     return () => {
-      const mousePos = robotjs.getMousePos();
-      robotjs.moveMouse(
+      const mousePos = this.getMousePosition();
+      this.createMouseMoveCommand(
         this.dir[0] * value + mousePos.x,
         this.dir[1] * value + mousePos.y
-      );
+      )();
     };
   }
 
@@ -104,14 +127,32 @@ class MouseController {
       case "S":
       case "SLEEP":
         return this.sleep(parseInt(cmdArgs, 10));
+      case "M":
+      case "MOVE": {
+        const [x, y] = cmdArgs.split(",").map(arg => parseInt(arg, 10));
+        const validArgs = !isNaN(x) && !isNaN(y);
+        if (validArgs) return this.createMouseMoveCommand(x, y);
+        this.error(
+          cmd,
+          `invalid x, y arguments provided to ${cmd}: expected <number>,<number> got: ${x},${y}`
+        );
+        break;
+      }
       default:
         if (!isNumber) {
-          return () =>
-            // eslint-disable-next-line no-console
-            console.error(`invalid command encountered: ${cmd}`);
+          return () => this.error(cmd);
         }
-        return this.createMouseMoveCommand(parseInt(cmd, 10));
+        return this.createRelativeMouseMoveCommand(parseInt(cmd, 10));
     }
+  }
+
+  /**
+   * @param {string} cmd
+   * @param {string} msg
+   */
+  error(cmd, msg) {
+    // eslint-disable-next-line no-console
+    console.error(msg ? msg : `invalid command encountered: ${cmd}`);
   }
 
   sleep(duration) {

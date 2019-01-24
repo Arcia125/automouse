@@ -131,12 +131,13 @@ class MouseController {
       case "MOVE": {
         const [x, y] = cmdArgs.split(",").map(arg => parseInt(arg, 10));
         const validArgs = !isNaN(x) && !isNaN(y);
-        if (validArgs) return this.createMouseMoveCommand(x, y);
-        this.error(
-          cmd,
-          `invalid x, y arguments provided to ${cmd}: expected <number>,<number> got: ${x},${y}`
-        );
-        break;
+        if (!validArgs)
+          return () =>
+            this.error(
+              cmd,
+              `invalid x, y arguments provided to ${cmd}: expected <number>,<number> got: ${x},${y}`
+            );
+        return this.createMouseMoveCommand(x, y);
       }
       default:
         if (!isNumber) {

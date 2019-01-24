@@ -5,6 +5,7 @@
 <a href="https://www.npmjs.com/package/automouse">
 <img src="https://img.shields.io/npm/v/automouse.svg">
 </a>
+<img src="https://travis-ci.com/Arcia125/automouse.svg?branch=master">
 <a href="https://www.codefactor.io/repository/github/arcia125/automouse">
 <img src="https://www.codefactor.io/repository/github/arcia125/automouse/badge">
 </a>

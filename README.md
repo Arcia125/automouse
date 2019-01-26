@@ -66,6 +66,7 @@ MOUSE-DOWN-RIGHT|MDR - toggle the right mouse button down.
 MOUSE-UP-RIGHT|MUR - toggle the right mouse button up.
 [SLEEP|S]:duration - waits the given amount of milliseconds.
 [MOVE|M]:x,y - moves the mouse to the given x and y coordinates.
+[KEY|K]:key - presses the given key.
 [integer] - move the mouse in the current direction by this amount. example: "right 50" == move the mouse 50 pixels to the right.
 ```
 

@@ -30,6 +30,8 @@ class MouseController {
     this.parseCommands = this.parseCommands.bind(this);
     this.runCommands = this.runCommands.bind(this);
     this.runFile = this.runFile.bind(this);
+    this.pressKey = this.pressKey.bind(this);
+    this.createKeyCommand = this.createKeyCommand.bind(this);
   }
 
   /**
@@ -73,6 +75,10 @@ class MouseController {
     robotjs.moveMouse(x, y);
   }
 
+  pressKey(key) {
+    robotjs.keyTap(key);
+  }
+
   /**
    * @returns {{ x: number, y: number }} current position of the mouse
    */
@@ -102,6 +108,12 @@ class MouseController {
         this.dir[0] * value + mousePos.x,
         this.dir[1] * value + mousePos.y
       )();
+    };
+  }
+
+  createKeyCommand(key) {
+    return () => {
+      this.pressKey(key);
     };
   }
 
@@ -159,6 +171,9 @@ class MouseController {
             );
         return this.createMouseMoveCommand(x, y);
       }
+      case "K":
+      case "KEY":
+        return this.createKeyCommand(cmdArgs);
       default:
         if (!isNumber) {
           return () => this.error(cmd);

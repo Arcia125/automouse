@@ -25,13 +25,11 @@ Control your mouse via CLI.
 
 Must have [npm](https://www.npmjs.com/get-npm), [python2](https://www.python.org/downloads/).
 
-On Windows you should make sure you have windows-build-tools installed. To install, run this from an elevated powershell or CMD.
+### Windows prereqs:
+* Python v2.
+* windows-build-tools `npm install --global --production windows-build-tools`
 
-```
-npm install --global --production windows-build-tools
-```
-
-On Linux you should make sure you have
+### Linux prereqs:
 * Python v2.
 * make.
 * A C/C++ compiler like GCC.

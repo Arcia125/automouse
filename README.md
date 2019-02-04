@@ -25,6 +25,20 @@ Control your mouse via CLI.
 
 Must have [npm](https://www.npmjs.com/get-npm), [python2](https://www.python.org/downloads/).
 
+On Windows you should make sure you have windows-build-tools installed. To install, run this from an elevated powershell or CMD.
+
+```
+npm install --global --production windows-build-tools
+```
+
+On Linux you should make sure you have
+* Python v2.
+* make.
+* A C/C++ compiler like GCC.
+* libxtst-dev and libpng++-dev (`sudo apt-get install libxtst-dev libpng++-dev`).
+
+Then run:
+
 ```
 npm install -g automouse
 ```

@@ -19,7 +19,7 @@
 <img src="https://img.shields.io/github/issues/arcia125/automouse.svg">
 </p>
 
-Control your mouse via CLI.
+Cross-platform automation CLI. Control your mouse and keyboard on Windows, Mac, or Linux. Great for simple GUI testing and automation.
 
 ## Installation
 

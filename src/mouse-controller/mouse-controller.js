@@ -32,6 +32,8 @@ class MouseController {
     this.runFile = this.runFile.bind(this);
     this.pressKey = this.pressKey.bind(this);
     this.createKeyCommand = this.createKeyCommand.bind(this);
+    this.createPrintCommand = this.createPrintCommand.bind(this);
+    this.getMousePosition = this.getMousePosition.bind(this);
   }
 
   /**
@@ -117,6 +119,12 @@ class MouseController {
     };
   }
 
+  createPrintCommand(valueFn) {
+    return () => {
+      console.log(valueFn());
+    }
+  }
+
   parseMouseCommand(mouseCommand) {
     const isNumber = !isNaN(mouseCommand);
     const fullCommand = isNumber ? mouseCommand : mouseCommand.toUpperCase();
@@ -174,6 +182,9 @@ class MouseController {
       case "K":
       case "KEY":
         return this.createKeyCommand(cmdArgs);
+      case "P":
+      case "PRINT":
+        return this.createPrintCommand(this.getMousePosition);
       default:
         if (!isNumber) {
           return () => this.error(cmd);
@@ -208,6 +219,10 @@ class MouseController {
 
   leftClick() {
     robotjs.mouseClick();
+  }
+
+  getMousePosition() {
+    return robotjs.getMousePos();
   }
 
   /**

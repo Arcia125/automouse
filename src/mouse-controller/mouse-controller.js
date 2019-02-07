@@ -13,7 +13,6 @@ class MouseController {
     this.setUp = this.setUp.bind(this);
     this.setDown = this.setDown.bind(this);
     this.moveMouse = this.moveMouse.bind(this);
-    this.getMousePosition = this.getMousePosition.bind(this);
     this.createMouseMoveCommand = this.createMouseMoveCommand.bind(this);
     this.createRelativeMouseMoveCommand = this.createRelativeMouseMoveCommand.bind(
       this
@@ -32,6 +31,8 @@ class MouseController {
     this.runFile = this.runFile.bind(this);
     this.pressKey = this.pressKey.bind(this);
     this.createKeyCommand = this.createKeyCommand.bind(this);
+    this.createPrintCommand = this.createPrintCommand.bind(this);
+    this.getMousePosition = this.getMousePosition.bind(this);
   }
 
   /**
@@ -117,6 +118,12 @@ class MouseController {
     };
   }
 
+  createPrintCommand(valueFn) {
+    return () => {
+      this.log(valueFn());
+    };
+  }
+
   parseMouseCommand(mouseCommand) {
     const isNumber = !isNaN(mouseCommand);
     const fullCommand = isNumber ? mouseCommand : mouseCommand.toUpperCase();
@@ -174,6 +181,9 @@ class MouseController {
       case "K":
       case "KEY":
         return this.createKeyCommand(cmdArgs);
+      case "P":
+      case "PRINT":
+        return this.createPrintCommand(this.getMousePosition);
       default:
         if (!isNumber) {
           return () => this.error(cmd);

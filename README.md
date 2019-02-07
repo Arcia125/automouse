@@ -26,14 +26,16 @@ Cross-platform automation CLI. Control your mouse and keyboard on Windows, Mac, 
 Must have [npm](https://www.npmjs.com/get-npm), [python2](https://www.python.org/downloads/).
 
 ### Windows prereqs:
-* Python v2.
-* windows-build-tools `npm install --global --production windows-build-tools`
+
+- Python v2.
+- windows-build-tools `npm install --global --production windows-build-tools`
 
 ### Linux prereqs:
-* Python v2.
-* make.
-* A C/C++ compiler like GCC.
-* libxtst-dev and libpng++-dev (`sudo apt-get install libxtst-dev libpng++-dev`).
+
+- Python v2.
+- make.
+- A C/C++ compiler like GCC.
+- libxtst-dev and libpng++-dev (`sudo apt-get install libxtst-dev libpng++-dev`).
 
 Then run:
 
@@ -80,7 +82,7 @@ MOUSE-UP-RIGHT|MUR - toggle the right mouse button up.
 [MOVE|M]:x,y - moves the mouse to the given x and y coordinates.
 [KEY|K]:key - presses the given key.
 PRINT|P - print the current mouse location.
-PRINT-COLOR|PC - print the color at the current mouse location.
+[PRINT-COLOR|PC]:x,y - print the color at the given x and y locations defaults to the current mouse location.
 [integer] - move the mouse in the current direction by this amount. example: "right 50" == move the mouse 50 pixels to the right.
 ```
 

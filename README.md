@@ -80,6 +80,7 @@ MOUSE-UP-RIGHT|MUR - toggle the right mouse button up.
 [MOVE|M]:x,y - moves the mouse to the given x and y coordinates.
 [KEY|K]:key - presses the given key.
 PRINT|P - print the current mouse location.
+PRINT-COLOR|PC - print the color at the current mouse location.
 [integer] - move the mouse in the current direction by this amount. example: "right 50" == move the mouse 50 pixels to the right.
 ```
 

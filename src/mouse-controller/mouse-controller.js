@@ -87,6 +87,10 @@ class MouseController {
     return robotjs.getMousePos();
   }
 
+  getColorAtPosition(x, y) {
+    return robotjs.getPixelColor(x, y);
+  }
+
   /**
    * @param {int} x
    * @param {int} y
@@ -184,6 +188,11 @@ class MouseController {
       case "P":
       case "PRINT":
         return this.createPrintCommand(this.getMousePosition);
+      case "PC":
+      case "PRINT-COLOR": {
+        const mousePosition = this.getMousePosition();
+        return this.createPrintCommand(() => this.getColorAtPosition(mousePosition.x, mousePosition.y));
+      }
       default:
         if (!isNumber) {
           return () => this.error(cmd);

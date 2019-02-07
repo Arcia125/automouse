@@ -190,18 +190,14 @@ class MouseController {
         return this.createPrintCommand(this.getMousePosition);
       case "PC":
       case "PRINT-COLOR": {
-        const position = (() => {
-          if (cmdArgs) {
-            return cmdArgs.split(",").reduce((curr, acc, i) => {
-              const key = i == 0 ? "x" : "y";
+        const position = cmdArgs
+          ? cmdArgs.split(",").reduce((curr, acc, i) => {
+              const key = i === 0 ? "x" : "y";
               const value = parseInt(curr, 10);
               acc[key] = value;
               return acc;
-            }, {});
-          } else {
-            return this.getMousePosition();
-          }
-        })();
+            }, {})
+          : this.getMousePosition();
         return this.createPrintCommand(() =>
           this.getColorAtPosition(position.x, position.y)
         );

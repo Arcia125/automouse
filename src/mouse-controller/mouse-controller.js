@@ -13,7 +13,6 @@ class MouseController {
     this.setUp = this.setUp.bind(this);
     this.setDown = this.setDown.bind(this);
     this.moveMouse = this.moveMouse.bind(this);
-    this.getMousePosition = this.getMousePosition.bind(this);
     this.createMouseMoveCommand = this.createMouseMoveCommand.bind(this);
     this.createRelativeMouseMoveCommand = this.createRelativeMouseMoveCommand.bind(
       this
@@ -121,8 +120,8 @@ class MouseController {
 
   createPrintCommand(valueFn) {
     return () => {
-      console.log(valueFn());
-    }
+      this.log(valueFn());
+    };
   }
 
   parseMouseCommand(mouseCommand) {
@@ -219,10 +218,6 @@ class MouseController {
 
   leftClick() {
     robotjs.mouseClick();
-  }
-
-  getMousePosition() {
-    return robotjs.getMousePos();
   }
 
   /**
